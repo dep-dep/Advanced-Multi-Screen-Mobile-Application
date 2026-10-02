@@ -1,10 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
-
-const stats = [
-  { value: "53", label: "Posts" },
-  { value: "12", label: "Members" },
-  { value: "1", label: "Admins" },
-];
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function GroupStats() {
   return (
@@ -16,13 +10,58 @@ export function GroupStats() {
         />
       </View>
 
-      {stats.map((stat) => (
-        <View key={stat.label} style={styles.stat}>
-          <Text style={styles.statValue}>{stat.value}</Text>
-          <Text>{stat.label}</Text>
-        </View>
-      ))}
+      <View style={styles.stat}>
+        <Text style={styles.statValue}>53</Text>
+        <Text>Posts</Text>
+      </View>
+      <View style={styles.stat}>
+        <Text style={styles.statValue}>12</Text>
+        <Text>Members</Text>
+      </View>
+      <View style={styles.stat}>
+        <Text style={styles.statValue}>1</Text>
+        <Text>Admins</Text>
+      </View>
     </View>
+  );
+}
+
+export function LogoGroupStatusBar() {
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <View style={styles.friendsRow}>
+        <View style={styles.profileImageFrame}>
+          <Image
+            source={require("@/assets/images/photo1.jpg")}
+            style={styles.profileImage}
+          />
+        </View>
+        <View style={styles.profileImageFrame}>
+          <Image
+            source={require("@/assets/images/grid1.jpg")}
+            style={styles.profileImage}
+          />
+        </View>
+        <View style={styles.profileImageFrame}>
+          <Image
+            source={require("@/assets/images/grid2.jpg")}
+            style={styles.profileImage}
+          />
+        </View>
+        <View style={styles.profileImageFrame}>
+          <Image
+            source={require("@/assets/images/grid4.jpg")}
+            style={styles.profileImage}
+          />
+        </View>
+        <View style={styles.profileImageFrame}>
+          <Image
+            source={require("@/assets/images/grid5.jpg")}
+            style={styles.profileImage}
+          />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -53,5 +92,10 @@ const styles = StyleSheet.create({
   statValue: {
     fontWeight: "bold",
     fontSize: 18,
+  },
+  friendsRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 15,
   },
 });
