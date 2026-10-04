@@ -36,8 +36,6 @@ export default function TabLayout() {
           width: "100%",
           backgroundColor: "#fff",
           borderTopWidth: 0,
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
           paddingTop: 7,
           paddingHorizontal: 20,
           paddingBottom: Math.max(insets.bottom, 10) + 7,

@@ -1,3 +1,4 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function GroupStats() {
@@ -26,40 +27,71 @@ export function GroupStats() {
   );
 }
 
+
 export function LogoGroupStatusBar() {
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      <View style={styles.friendsRow}>
-        <View style={styles.profileImageFrame}>
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={styles.storiesRow}
+    >
+      <View style={styles.story}>
+        <View style={[styles.storyFrame, styles.ownStoryFrame]}>
           <Image
             source={require("@/assets/images/photo1.jpg")}
-            style={styles.profileImage}
+            style={styles.storyImage}
           />
         </View>
-        <View style={styles.profileImageFrame}>
+        <View style={styles.addStoryBadge}>
+          <Ionicons name="add" size={22} color="#fff" />
+        </View>
+        <Text style={styles.storyName} numberOfLines={1}>
+          Pikachu
+        </Text>
+      </View>
+      <View style={styles.story}>
+        <View style={styles.storyFrame}>
           <Image
             source={require("@/assets/images/grid1.jpg")}
-            style={styles.profileImage}
+            style={styles.storyImage}
           />
         </View>
-        <View style={styles.profileImageFrame}>
+        <Text style={styles.storyName} numberOfLines={1}>
+          Pikachu
+        </Text>
+      </View>
+      <View style={styles.story}>
+        <View style={styles.storyFrame}>
           <Image
             source={require("@/assets/images/grid2.jpg")}
-            style={styles.profileImage}
+            style={styles.storyImage}
           />
         </View>
-        <View style={styles.profileImageFrame}>
+        <Text style={styles.storyName} numberOfLines={1}>
+          Pikachu
+        </Text>
+      </View>
+      <View style={styles.story}>
+        <View style={styles.storyFrame}>
           <Image
             source={require("@/assets/images/grid4.jpg")}
-            style={styles.profileImage}
+            style={styles.storyImage}
           />
         </View>
-        <View style={styles.profileImageFrame}>
+        <Text style={styles.storyName} numberOfLines={1}>
+          Pikachu
+        </Text>
+      </View>
+      <View style={styles.story}>
+        <View style={styles.storyFrame}>
           <Image
             source={require("@/assets/images/grid5.jpg")}
-            style={styles.profileImage}
+            style={styles.storyImage}
           />
         </View>
+        <Text style={styles.storyName} numberOfLines={1}>
+          Pikachu
+        </Text>
       </View>
     </ScrollView>
   );
@@ -93,9 +125,49 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
   },
-  friendsRow: {
+  storiesRow: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    gap: 15,
+    gap: 12,
+    paddingBottom: 16,
+  },
+  story: {
+    alignItems: "center",
+    width: 88,
+  },
+  storyFrame: {
+    width: 84,
+    height: 84,
+    borderRadius: 42,
+    borderWidth: 2,
+    borderColor: "#d62976",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  ownStoryFrame: {
+    borderColor: "#dbdbdb",
+  },
+  storyImage: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+  },
+  addStoryBadge: {
+    position: "absolute",
+    top: 54,
+    right: 0,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    backgroundColor: "#0095f6",
+    borderColor: "#fff",
+    borderWidth: 2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  storyName: {
+    color: "#111",
+    fontSize: 12,
+    marginTop: 5,
+    maxWidth: 84,
   },
 });

@@ -1,6 +1,7 @@
+import { ScrollView, StyleSheet, View } from "react-native";
 import { LogoGroupStatusBar } from "@/components/group-stats";
 import { HeaderHome } from "@/components/header";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { FeedReelPost } from "@/components/reels";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       >
         <HeaderHome />
         <LogoGroupStatusBar />
+        <FeedReelPost />
       </ScrollView>
     </View>
   );

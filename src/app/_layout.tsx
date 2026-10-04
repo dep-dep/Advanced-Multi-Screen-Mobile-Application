@@ -36,7 +36,7 @@ function RootContent() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#8d8d8e",
+    backgroundColor: "#fff",
   },
   appContent: {
     flex: 1,

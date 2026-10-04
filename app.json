@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/expo.icon/Assets/grid.png",
     "scheme": "advancedmultiscreenmobileapplication",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "light",
     "ios": {
       "icon": "./assets/expo.icon"
     },
@@ -30,7 +30,8 @@
           "image": "./assets/expo.icon/Assets/grid.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true,

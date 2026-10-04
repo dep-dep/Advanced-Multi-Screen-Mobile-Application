@@ -1,3 +1,4 @@
+import { useVideoPlayer, VideoView } from "expo-video";
 import { Image, StyleSheet, View } from "react-native";
 
 export function PhotoGrid() {
@@ -91,6 +92,32 @@ export function PhotoGrid() {
   );
 }
 
+export function BackgroundImage() {
+  const player = useVideoPlayer(
+    require("../../assets/video/16752507_2160_3840_60fps.mp4"),
+    (videoPlayer) => {
+      videoPlayer.loop = true;
+      videoPlayer.muted = true;
+      videoPlayer.play();
+    }
+  );
+
+  return (
+    <View
+      style={styles.backgroundVideoContainer}
+      onLayout={() => player.play()}
+    >
+      <VideoView
+        player={player}
+        style={styles.backgroundVideo}
+        contentFit="cover"
+        nativeControls={false}
+        playsInline
+      />
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   photoGrid: {
     flexDirection: "row",
@@ -108,5 +135,17 @@ const styles = StyleSheet.create({
   photo: {
     width: "100%",
     height: "100%",
+  },
+  backgroundVideoContainer: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  backgroundVideo: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#111",
   },
 });

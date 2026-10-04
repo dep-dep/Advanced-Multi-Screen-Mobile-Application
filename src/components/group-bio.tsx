@@ -5,7 +5,7 @@ export function GroupBio() {
     <View style={styles.bio}>
       <Text style={styles.bioTitle}>OOTD Everyday</Text>
       <Text>Fit check!</Text>
-      <Text>You know we'll hype you up.</Text>
+      <Text>You know well hype you up.</Text>
     </View>
   );
 }
