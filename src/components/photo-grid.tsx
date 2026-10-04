@@ -1,93 +1,32 @@
 import { useVideoPlayer, VideoView } from "expo-video";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View, type ImageSourcePropType } from "react-native";
+import { useAppTheme } from "@/theme-context";
 
 export function PhotoGrid() {
   return (
     <View style={styles.photoGrid}>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid1.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid2.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid3.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid4.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid5.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid6.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid7.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid8.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid9.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid10.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid11.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
-      <View style={styles.photoGridItem}>
-        <Image
-          source={require("@/assets/images/grid12.jpg")}
-          style={styles.photo}
-          resizeMode="cover"
-        />
-      </View>
+      <PhotoGridItem source={require("@/assets/images/grid1.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid2.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid3.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid4.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid5.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid6.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid7.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid8.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid9.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid10.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid11.jpg")} />
+      <PhotoGridItem source={require("@/assets/images/grid12.jpg")} />
+    </View>
+  );
+}
+
+function PhotoGridItem({ source }: { source: ImageSourcePropType }) {
+  const { colors } = useAppTheme();
+
+  return (
+    <View style={[styles.photoGridItem, { backgroundColor: colors.photoPlaceholder }]}>
+      <Image source={source} style={styles.photo} resizeMode="cover" />
     </View>
   );
 }
@@ -129,7 +68,6 @@ const styles = StyleSheet.create({
   photoGridItem: {
     width: "32.2%",
     aspectRatio: 1,
-    backgroundColor: "#e1e1e1",
     overflow: "hidden",
   },
   photo: {

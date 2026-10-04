@@ -1,29 +1,32 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Stack } from "expo-router";
 import { StyleSheet, Text, View, Image } from "react-native";
+import { useAppTheme } from "@/theme-context";
 
 export const Header = () => {
   return <Stack.Screen options={{ headerShown: false }} />;
 };
 
 export function HeaderHome() {
+  const { colors } = useAppTheme();
+
   return (
     <View style={styles.profileHeaderHome}>
       <Ionicons
         name="add-outline"
         size={38}
-        color="#111"
+        color={colors.icon}
         style={styles.headerIconHome}
       />
 
       <View style={styles.profileTitleGroupHome}>
-        <Text style={styles.profileTitleHome}>Instagram</Text>
+        <Text style={[styles.profileTitleHome, { color: colors.text }]}>Instagram</Text>
       </View>
 
       <Ionicons
         name="heart-outline"
         size={36}
-        color="#111"
+        color={colors.icon}
         style={styles.headerIconHome}
       />
     </View>
@@ -31,13 +34,15 @@ export function HeaderHome() {
 }
 
 export function HeaderReels() {
+  const { colors } = useAppTheme();
+
   return (
     <View style={styles.reelsRow}>
-      <Ionicons name="add" size={35} color="#111"/>
-      <Text style={styles.reelText}>Reels</Text>
+      <Ionicons name="add" size={35} color={colors.icon} />
+      <Text style={[styles.reelText, { color: colors.text }]}>Reels</Text>
 
       <View style={styles.logoHug}>
-        <Text style={styles.reelFreindsText}>Friends</Text>
+        <Text style={[styles.reelFreindsText, { color: colors.secondaryText }]}>Friends</Text>
       <Image
         source={require("@/assets/images/grid1.jpg")}
         style={[styles.icon, {zIndex: 3}, {marginLeft: -15}]}
@@ -51,7 +56,7 @@ export function HeaderReels() {
           style={[styles.icon, {zIndex: 1}, {marginLeft: -15}]}
         />
         </View>
-        <Ionicons name="menu" size={35} color="#111"/>
+        <Ionicons name="menu" size={35} color={colors.icon} />
     </View>
   );
 }
@@ -68,9 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 30,
   },
-  profileSubtext: {
-    color: "#bcbcbc",
-  },
+  profileSubtext: {},
   profileTitleGroupHome: {
     alignItems: "center",
   },
@@ -95,7 +98,6 @@ const styles = StyleSheet.create({
     fontFamily: "HelveticaNeue-Bold",
     fontWeight: "bold",
     fontSize: 20,
-    color: "#888888",
     paddingRight: 18,
   },
   reelsRow : {

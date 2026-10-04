@@ -1,6 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import type { ComponentProps } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useAppTheme } from "@/theme-context";
 
 type IconName = ComponentProps<typeof Ionicons>["name"];
 
@@ -10,10 +11,12 @@ type TabPlaceholderProps = {
 };
 
 export function TabPlaceholder({ icon, title }: TabPlaceholderProps) {
+  const { colors } = useAppTheme();
+
   return (
-    <View style={styles.container}>
-      <Ionicons name={icon} size={42} color="#111" />
-      <Text style={styles.title}>{title}</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Ionicons name={icon} size={42} color={colors.icon} />
+      <Text style={[styles.title, { color: colors.text }]}>{title}</Text>
     </View>
   );
 }

@@ -6,10 +6,14 @@ import { GroupStats } from "@/components/group-stats";
 import { Header } from "@/components/header";
 import { MemberButton } from "@/components/member-button";
 import { PhotoGrid } from "@/components/photo-grid";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { useAppTheme } from "@/theme-context";
 
 export default function Index() {
+  const { colors } = useAppTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -18,7 +22,10 @@ export default function Index() {
         <GroupProfileBar />
         <GroupStats />
         <GroupBio />
-        <MemberButton />
+        <View style={styles.memberActions}>
+          <MemberButton />
+          <ThemeToggle />
+        </View>
         <PhotoGrid />
       </ScrollView>
     </View>
@@ -33,5 +40,10 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: 20,
     paddingBottom: 110,
+  },
+  memberActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
   },
 });

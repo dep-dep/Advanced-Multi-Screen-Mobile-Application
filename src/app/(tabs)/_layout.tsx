@@ -3,17 +3,19 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 import { Image, Pressable, StyleSheet } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useAppTheme } from "@/theme-context";
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
+  const { colors } = useAppTheme();
 
   return (
     <Tabs
       initialRouteName="index"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#111",
-        tabBarInactiveTintColor: "#111",
+        tabBarActiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.text,
         tabBarShowLabel: false,
         tabBarButton: (props) => {
           const { ref: _ref, ...pressableProps } = props;
@@ -34,7 +36,7 @@ export default function TabLayout() {
           left: 0,
           right: 0,
           width: "100%",
-          backgroundColor: "#fff",
+          backgroundColor: colors.tabBar,
           borderTopWidth: 0,
           paddingTop: 7,
           paddingHorizontal: 20,

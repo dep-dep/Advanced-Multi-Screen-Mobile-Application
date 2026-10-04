@@ -1,7 +1,10 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useAppTheme } from "@/theme-context";
 
 export function GroupStats() {
+  const { colors } = useAppTheme();
+
   return (
     <View style={styles.statsRow}>
       <View style={styles.profileImageFrame}>
@@ -12,16 +15,16 @@ export function GroupStats() {
       </View>
 
       <View style={styles.stat}>
-        <Text style={styles.statValue}>53</Text>
-        <Text>Posts</Text>
+        <Text style={[styles.statValue, { color: colors.text }]}>53</Text>
+        <Text style={{ color: colors.text }}>Posts</Text>
       </View>
       <View style={styles.stat}>
-        <Text style={styles.statValue}>12</Text>
-        <Text>Members</Text>
+        <Text style={[styles.statValue, { color: colors.text }]}>12</Text>
+        <Text style={{ color: colors.text }}>Members</Text>
       </View>
       <View style={styles.stat}>
-        <Text style={styles.statValue}>1</Text>
-        <Text>Admins</Text>
+        <Text style={[styles.statValue, { color: colors.text }]}>1</Text>
+        <Text style={{ color: colors.text }}>Admins</Text>
       </View>
     </View>
   );
@@ -29,6 +32,8 @@ export function GroupStats() {
 
 
 export function LogoGroupStatusBar() {
+  const { colors } = useAppTheme();
+
   return (
     <ScrollView
       horizontal
@@ -36,7 +41,13 @@ export function LogoGroupStatusBar() {
       contentContainerStyle={styles.storiesRow}
     >
       <View style={styles.story}>
-        <View style={[styles.storyFrame, styles.ownStoryFrame]}>
+          <View
+            style={[
+              styles.storyFrame,
+              styles.ownStoryFrame,
+              { borderColor: colors.border },
+            ]}
+          >
           <Image
             source={require("@/assets/images/photo1.jpg")}
             style={styles.storyImage}
@@ -45,7 +56,7 @@ export function LogoGroupStatusBar() {
         <View style={styles.addStoryBadge}>
           <Ionicons name="add" size={22} color="#fff" />
         </View>
-        <Text style={styles.storyName} numberOfLines={1}>
+          <Text style={[styles.storyName, { color: colors.text }]} numberOfLines={1}>
           Pikachu
         </Text>
       </View>
@@ -56,7 +67,7 @@ export function LogoGroupStatusBar() {
             style={styles.storyImage}
           />
         </View>
-        <Text style={styles.storyName} numberOfLines={1}>
+        <Text style={[styles.storyName, { color: colors.text }]} numberOfLines={1}>
           Pikachu
         </Text>
       </View>
@@ -67,7 +78,7 @@ export function LogoGroupStatusBar() {
             style={styles.storyImage}
           />
         </View>
-        <Text style={styles.storyName} numberOfLines={1}>
+        <Text style={[styles.storyName, { color: colors.text }]} numberOfLines={1}>
           Pikachu
         </Text>
       </View>
@@ -78,7 +89,7 @@ export function LogoGroupStatusBar() {
             style={styles.storyImage}
           />
         </View>
-        <Text style={styles.storyName} numberOfLines={1}>
+        <Text style={[styles.storyName, { color: colors.text }]} numberOfLines={1}>
           Pikachu
         </Text>
       </View>
@@ -89,7 +100,7 @@ export function LogoGroupStatusBar() {
             style={styles.storyImage}
           />
         </View>
-        <Text style={styles.storyName} numberOfLines={1}>
+        <Text style={[styles.storyName, { color: colors.text }]} numberOfLines={1}>
           Pikachu
         </Text>
       </View>
@@ -143,9 +154,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  ownStoryFrame: {
-    borderColor: "#dbdbdb",
-  },
+  ownStoryFrame: {},
   storyImage: {
     width: 76,
     height: 76,
@@ -165,7 +174,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   storyName: {
-    color: "#111",
     fontSize: 12,
     marginTop: 5,
     maxWidth: 84,

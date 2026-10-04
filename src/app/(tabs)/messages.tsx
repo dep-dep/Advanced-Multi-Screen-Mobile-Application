@@ -2,18 +2,21 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import type { ImageSourcePropType } from "react-native";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { mockConversations } from "@/data/mock-content";
+import { useAppTheme } from "@/theme-context";
 
 export default function MessagesScreen() {
+  const { colors } = useAppTheme();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
-        <Text style={styles.title}>pikachu_daily</Text>
-        <Ionicons name="create-outline" size={27} color="#111" />
+        <Text style={[styles.title, { color: colors.text }]}>pikachu_daily</Text>
+        <Ionicons name="create-outline" size={27} color={colors.icon} />
       </View>
 
-      <View style={styles.searchBar}>
-        <Ionicons name="search" size={20} color="#666" />
-        <Text style={styles.searchPlaceholder}>Search Pikachu friends</Text>
+      <View style={[styles.searchBar, { backgroundColor: colors.mutedSurface }]}>
+        <Ionicons name="search" size={20} color={colors.secondaryText} />
+        <Text style={[styles.searchPlaceholder, { color: colors.placeholder }]}>Search Pikachu friends</Text>
       </View>
 
       <ScrollView
@@ -31,30 +34,30 @@ export default function MessagesScreen() {
 
       <View style={styles.locationRow}>
         <Ionicons name="navigate" size={14} color="#ff4058" />
-        <Text style={styles.locationText}>Location off</Text>
+        <Text style={[styles.locationText, { color: colors.text }]}>Location off</Text>
       </View>
 
       <View style={styles.sectionHeader}>
-        <Text style={styles.sectionTitle}>Messages</Text>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Messages</Text>
         <Text style={styles.requests}>Requests</Text>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
         {mockConversations.map((conversation) => (
           <View key={conversation.id} style={styles.conversationRow}>
-            <View style={styles.avatarFrame}>
+            <View style={[styles.avatarFrame, { backgroundColor: colors.mutedSurface }]}>
               {conversation.image ? (
                 <Image source={conversation.image} style={styles.avatar} />
               ) : null}
               {conversation.online ? <View style={styles.onlineDot} /> : null}
             </View>
             <View style={styles.conversationInfo}>
-              <Text style={styles.name}>{conversation.name}</Text>
-              <Text style={styles.preview} numberOfLines={1}>
+              <Text style={[styles.name, { color: colors.text }]}>{conversation.name}</Text>
+              <Text style={[styles.preview, { color: colors.secondaryText }]} numberOfLines={1}>
                 {conversation.preview} · {conversation.time}
               </Text>
             </View>
-            {conversation.unread ? <View style={styles.unreadDot} /> : null}
+              {conversation.unread ? <View style={styles.unreadDot} /> : null}
           </View>
         ))}
       </ScrollView>
@@ -68,9 +71,14 @@ type NoteItemProps = {
 };
 
 function NoteItem({ name, image }: NoteItemProps) {
+  const { colors } = useAppTheme();
+
   return (
     <View style={styles.noteItem}>
-      <Image source={image} style={styles.noteImage} />
+      <Image
+        source={image}
+        style={[styles.noteImage, { borderColor: colors.border }]}
+      />
       <Text style={styles.noteName} numberOfLines={1}>{name}</Text>
     </View>
   );
